@@ -1,0 +1,49 @@
+<h1>
+  React in Ng2+ POC
+</h1>
+
+<p><i>
+  I was only able to find lib that wrap react comp into AngularJs version 1 (ngreact, react2angular) but not for Ng2+.<br>
+  Maybe it's because the wrapping of a react comp is quite straightforward in Ng2+.
+</i></p><br>
+
+<div id="custom-wrapper-container">
+  <h2>widget comp wrapper :</h2>
+  <i style="color: green"> works well</i>
+  <custom-wrapper-component [counter]="counter" (componentClick)="handleOnClick($event)"></custom-wrapper-component>
+
+  <hr>
+
+  <h2>layout comp wrapper :</h2>
+  <i style="color: red">going nowhere with this one, seems to be complicated</i>
+  <layout-wrapper-component>
+    <h3>Simple <u>transclusion</u>  </h3>
+  </layout-wrapper-component>
+
+  <hr>
+
+  <h2>ng-model comp wrapper :</h2>
+  <i style="color: green"> works well</i><br>
+  <b>angular</b> : <br/>
+  <input [(ngModel)]="name" #ctrl="ngModel" required> <br/>
+  Angular Valid: {{ ctrl.valid }} <br/><br/>
+  <b>react </b>: <br/>
+  <input-wrapper-component [(ngModel)]="name" #reactCtrl="ngModel" required></input-wrapper-component>
+  React Valid: {{ reactCtrl.valid }} <br/>
+  Value: {{ name }}
+  <button (click)="setValue()">Set value</button>
+
+  <hr>
+
+  <h2>reactive-form comp wrapper :</h2>
+  <i style="color: red">Work In Progress</i><br>
+  <div *ngIf="form" [formGroup]="form!">
+    Angular first : <input *ngIf="firstControl" [formControl]="firstControl!"/> <br/>
+    Angular second : <input *ngIf="secondControl" [formControl]="secondControl!"/> <br/>
+    <br/>
+    React first : <input-wrapper-reactive-component *ngIf="firstControl" [formControl]="firstControl!"></input-wrapper-reactive-component> <br/>
+    React second : <input-wrapper-reactive-component *ngIf="secondControl" [formControl]="secondControl!"></input-wrapper-reactive-component> <br/>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
