@@ -35,7 +35,7 @@ export const CustomReactComponent: FunctionComponent<IMyComponentProps> = (props
   return (
     <div>
       <div>Props counter: {propsCounter}
-        <button type="button" onClick={handleClick}>click to increase</button>
+        <button type="button" onClick={handleClick} data-testid="increase-btn">click to increase</button>
       </div>
       <div>State counter: {stateCounter}</div>
     </div>
